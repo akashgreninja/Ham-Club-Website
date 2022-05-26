@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="static/assets/css/templatemo-chain-app-dev.css"
+    />
+    <link rel="stylesheet" href="static/assets/css/animated.css" />
+    <link rel="stylesheet" href="static/assets/css/owl.css" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <header
+      class="header-area header-sticky wow slideInDown"
+      data-wow-duration="0.75s"
+      data-wow-delay="0s"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="main-nav">
+              <!-- ***** Logo Start ***** -->
+              <a href="index.html" class="logo">
+                <img
+                  src="static/assets/images/HAM-LOGO.png"
+                  alt="Chain App Dev"
+                />
+              </a>
+              <!-- ***** Logo End ***** -->
+              <!-- ***** Menu Start ***** -->
+              <ul class="nav">
+                <li class="scroll-to-section">
+                  <a href="#top" class="active">Home</a>
+                </li>
+                <li class="scroll-to-section">
+                  <a href="#services">Join Us</a>
+                </li>
+                <li class="scroll-to-section">
+                  <a href="#services">Contact Us</a>
+                </li>
+                <li class="scroll-to-section"><a href="#about">About</a></li>
+              </ul>
+              <a class="menu-trigger">
+                <span>Menu</span>
+              </a>
+              <!-- ***** Menu End ***** -->
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div
+      class="main-banner wow fadeIn"
+      id="top"
+      data-wow-duration="1s"
+      data-wow-delay="0.5s"
+    >
+      <div
+        class="left-content show-up header-text wow fadeInLeft"
+        data-wow-duration="1s"
+        data-wow-delay="1s"
+      >
+        <h1 class="font_1 Board">Our Board members</h1>
+      </div>
+    </div>
+    <div class="container bod-display">
+      <div class="row">
+        {%for i in dict %}
+
+        <div class="col-md-4">
+          <div class="card modifications h-100" style="width: 18rem">
+            <img
+              src="/static/assets/images/Bod-images/Akash.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{i.name}}</h5>
+
+              <p class="card-text">{{i.description}}</p>
+            </div>
+            <div class="socials-board">
+           
+              <a href="{{i.facebook}}"
+                ><i class="fa-brands fa-facebook fa-2x"></i>
+              </a>
+              <a href="{{i.instagram}}"
+                ><i class="fa-brands fa-instagram fa-2x"></i></a>
+              <a href="{{i.twitter}}"
+                ><i class="fa-brands fa-twitter fa-2x"></i
+              ></a>
+              <a href="{{i.linkedIn}}"
+                ><i class="fa-brands fa-linkedin fa-2x"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+        
+      </div>
+    </div>
+    
+    {% extends "footer.html" %}
+
+    <script src="/static/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="static/assets/js/animation.js"></script>
+
+    <script src="static/assets/js/owl-carousel.js"></script>
+
+    <script src="static/assets/js/popup.js"></script>
+    <script src="static/assets/js/custom.js"></script>
+
+  </body>
+</html>

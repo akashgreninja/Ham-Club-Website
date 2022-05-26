@@ -1,0 +1,123 @@
+.font_1{
+  font-family: 'Odibee Sans', cursive;
+  font-size: 70px;
+  font-weight: bold;
+}
+.footer-logo{
+  height: 300px;
+  width: 300px;
+}
+
+.footer-widget{
+  padding-right: 100px;
+}
+
+/* About what we do-page-1 */
+.what-we-do{
+  padding-top: 30px;
+  font-size: 34px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  color: gray
+}
+
+
+/* .btn-primary{
+
+  
+  
+} */
+
+.padding{
+  padding-bottom: 4rem;
+}
+.cont{
+  padding-top: 40px;
+
+  display: flex;
+  justify-content: center;
+
+}
+.kgf{
+  padding-top: 40px;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}
+.fa-7x{
+  color: #004AA7;
+}
+
+.Board{
+  text-align: center;
+}
+
+.Bod-pic{
+  width: 42rem;
+ 
+}
+.Board-pic-cont{
+  text-align: center;
+}
+.last-button{
+  padding-top: 20px;
+}
+
+.center::before{
+  content: '';
+  background-image: url('/static/assets/images/services-right-dec.png');
+  background-repeat: no-repeat;
+  background-size: 100rem;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.picrad::before{
+  content: '';
+  background-image: url('/static/assets/images/services-right-dec.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+}
+
+.card-img-top{
+  width: 175px;
+}
+.card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+/* .bod-display{
+  display: flex;
+  flex-direction: row;
+}  */
+
+.modifications:hover{
+  background-image: url('/static/assets/images/service-bg.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  transform: scale(1.1);
+
+}
+.card-img-top{
+  padding-top: 20px;
+  border-radius: 100%;
+  
+}
+.fa-2x{
+  padding-right: 10px;
+  color: black;
+}
