@@ -6,7 +6,7 @@ app=Flask(__name__)
 
 dict=[
     {
-        "photo":"./static/assets/images/Bod-images/thejusvini.jpg",
+        "photo":"./static/assets/images/Bod-images/thejusvini.webp",
         "name":"Thejusvani",
         "post":"President",
         "quote":"It's all happening for a reason.",
@@ -16,7 +16,7 @@ dict=[
         "twitter":"https://twitter.com/thejusvani?t=wGmsuKzD1rtWUVHY1w7zJw&s=09",
     },
     {
-        "photo":"./static/assets/images/Bod-images/Sampreth S.jpg",
+        "photo":"./static/assets/images/Bod-images/Sampreth S.webp",
         "name":"Sampreth S",
         "post":"Vice President",
         "quote":"You must use your heart to decide the destination, but use your head to plot the journey.",
@@ -26,7 +26,7 @@ dict=[
         "twitter":"https://twitter.com/sampreth_reddy",
         },
     {
-        "photo":"./static/assets/images/Bod-images/Velam Varsha.jpg",
+        "photo":"./static/assets/images/Bod-images/Velam Varsha.webp",
         "name":"V. Varsha",
         "post":"Secretary",
         "quote":"Without rain nothing grows, learn to embrace the storms of your life!",
@@ -36,7 +36,7 @@ dict=[
         "twitter":"",
     },
     {
-        "photo":"./static/assets/images/Bod-images/Sampreth S.jpg",
+        "photo":"./static/assets/images/Bod-images/Indefinite Integral.webp",
         "name":"Supreeth",
         "post":"Joint Secretary",
         "quote":"You Smile and your surrounding smiles with you",
@@ -46,7 +46,7 @@ dict=[
         "twitter":"",
     },
     {
-        "photo":"./static/assets/images/Bod-images/Rando.jpg",
+        "photo":"./static/assets/images/Bod-images/somya.webp",
         "name":"Soumya",
         "post":"Tresurer",
         "quote":"All you have is now.",
@@ -56,7 +56,7 @@ dict=[
         "twitter":"",
         },
           {
-        "photo":"./static/assets/images/Bod-images/anirudh.jpg",
+        "photo":"./static/assets/images/Bod-images/anirudh.webp",
         "name":"Anirudh Madhav Kulkarni",
         "post":"Social Media Director",
         "quote":"You miss 100% of the shots you don’t take.",
@@ -66,8 +66,8 @@ dict=[
         "twitter":"",
     },
         {
-        "photo":"./static/assets/images/Bod-images/Mansi.jpg",
-        "name":"ANIKETH U ACHAR",
+        "photo":"./static/assets/images/Bod-images/Mansi.webp",
+        "name":"Aniketh U Achar",
         "post":"Technical Head",
         "quote":"BE REAL",
         "instagram":"https://www.instagram.com/aniketh_achar/",
@@ -76,7 +76,7 @@ dict=[
         "twitter":"",
         },
             {
-        "photo":"./static/assets/images/Bod-images/Swathi Mohan.jpg",
+        "photo":"./static/assets/images/Bod-images/Swathi Mohan.webp",
         "name":"Swathi.M",
         "post":"Technical head",
         "Quote":"Never stop chasing your dreams :)",
@@ -89,7 +89,7 @@ dict=[
   
 
     {
-        "photo":"./static/assets/images/Bod-images/Joshna.jpg",
+        "photo":"./static/assets/images/Bod-images/Joshna.webp",
         "name":"Chittineni Joshna",
         "post":"Video Editor", 
         "quote":"Being happy is the greatest form of success",
@@ -100,8 +100,8 @@ dict=[
     },
 
     {
-        "photo":"./static/assets/images/Bod-images/LIKHITHRAJ.jpg",
-        "name":"LIKHITHRAJ D R",
+        "photo":"./static/assets/images/Bod-images/likith.webp",
+        "name":"Likithraj D R",
         "post":"PR Director", 
         "quote":"ಸೋತರು ನಗುತಿರು ಸೋಲಿಸಿದವನು ಚಿಂತಿಸುವಂತೆ",
         "instagram":"https://instagram.com/likhithraj_1?igshid=YmMyMTA2M2Y=",
@@ -110,7 +110,17 @@ dict=[
         "twitter":"https://twitter.com/DLikhithraj?t=OMIOGZBYRYJGNXpXzaYliw&s=09",
     },
     {
-        "photo":"./static/assets/images/Bod-images/Prithvi Prashanth.jpg",
+        "photo":"",
+        "name":"Pranav M",
+        "post":"",
+        "quote":"It's time to toss the dice",
+        "instagram":"https://www.instagram.com/aniketh_achar/",
+        "linkedIn":"",
+        "facebook":"",
+        "twitter":"",
+        },
+    {
+        "photo":"./static/assets/images/Bod-images/Prithvi Prashanth.webp",
         "name":"Prithvi",
         "post":"Event coordinator", 
         "quote":"today's actions are tomorrow's future.",
@@ -120,7 +130,7 @@ dict=[
         "twitter":"",
     },
     {
-    "photo":"./static/assets/images/Bod-images/Sharath NM.jpg",
+    "photo":"./static/assets/images/Bod-images/Sharath NM.webp",
     "name":"Sharath N M",
     "post":"Event coordinator",
     "quote":"Success is the best revenge. ",
@@ -131,7 +141,7 @@ dict=[
     "twitter":"",
        },
     {
-        "photo":"./static/assets/images/Bod-images/Nishit Khamesra.jpg",
+        "photo":"./static/assets/images/Bod-images/Nishit Khamesra.webp",
         "name":"Nishit Khamesra",
         "post":"Editor", 
         "quote":"Love the life that you live,live the life that you love!",
@@ -141,7 +151,7 @@ dict=[
         "twitter":"",
     },
     {
-        "photo":"./static/assets/images/Bod-images/aditya.jpg",
+        "photo":"./static/assets/images/Bod-images/aditya.webp",
         "name":"Aditya Choudhary",
         "post":"Sponsorship head",
         "quote":"The greatest glory in living lies not in never falling, but in rising every time we fall.",
@@ -156,8 +166,8 @@ dict=[
     
     
     {
-        "photo":"./static/assets/images/Bod-images/akash uday.jpeg",
-        "name":"akash",
+        "photo":"./static/assets/images/Bod-images/akash uday.webp",
+        "name":"Akash Uday",
         "post":"web developer",
         "description":"I am akash uday hulekal and i like to play basketball",
         "instagram":"https://www.instagram.com/ak_uh13/",
