@@ -1,6 +1,6 @@
 .font_1{
   font-family: 'Odibee Sans', cursive;
-  font-size: 70px;
+  font-size: 65px;
   font-weight: bold;
 }
 .footer-logo{
@@ -15,22 +15,23 @@
 /* About what we do-page-1 */
 .what-we-do{
   padding-top: 30px;
-  font-size: 34px;
-  font-family: 'Tiro Kannada', serif;
+  padding-bottom: 20px;
+  font-size: 30px;
+  font-family: 'Work Sans', sans-serif;
   font-weight:400;
-  color: gray
+  color: black;
 }
 .what-we-do-1{
  
-  font-size: 34px;
-  font-family: 'Tiro Kannada', serif;
+  font-size: 30px;
+  font-family: 'Work Sans', sans-serif;
   font-weight:400;
-  color: gray
+  color: black
 }
 .origin{
   font-family: 'Tiro Kannada', serif;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 34px;
   color: #211A23;
 }
 
@@ -215,6 +216,9 @@ h3{
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: bold;
   font-size: 21px;
+}
+.for-login{
+  padding-top: 300px;
 }
 @media (max-width:1024px) {
   .offset-lg-3{
