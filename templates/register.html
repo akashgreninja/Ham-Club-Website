@@ -65,14 +65,15 @@
       <div class="row">
         <div class="col-12">
           <nav class="main-nav">
-          
+            <!-- ***** Logo Start ***** -->
             <a href="{{url_for('home')}}" class="logo">
               <img
                 src="static/assets/images/HAM-LOGO.png"
                
               />
             </a>
-       
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class="scroll-to-section">
                 <a href="{{url_for('home')}}" class="active">Home</a>
@@ -112,7 +113,7 @@
       
     </div>
   </header>
-
+      
   <div class="container register">
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -126,12 +127,13 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
        
-        {{wtf.quick_form(form,novalidate=True, button_map={"submit": "primary my-3"})}}
+       {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+
       </div>
     </div>
   </div>
-      
 
+    
 </div>
 <footer id="newsletter">
   <div class="container">

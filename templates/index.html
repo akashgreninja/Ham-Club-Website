@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-   
     <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="HAM CLUB OF BIT'S OFFICIAL WEBSITE established in 2022 |HAM CLUB |BIT " />
+    <meta name="author" content="HAM CLUB" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,33 +15,12 @@
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
-    
-
     <title>HAM Club Of BIT</title>
     <link rel="icon" href="../static/assets/images/logo.ico" type="image/x-icon">
-
-    <!-- Bootstrap core CSS -->
     <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-
-    <!--
-
-TemplateMo 570 Chain App Dev
-
-https://templatemo.com/tm-570-chain-app-dev
-
--->
-
-    <!-- Additional CSS Files -->
-    <!-- <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-      crossorigin="anonymous"
-    /> -->
     <link rel="stylesheet" href="static/assets/css/templatemo-chain-app-dev.css" />
     <link rel="stylesheet" href="static/assets/css/animated.css" />
     <link rel="stylesheet" href="static/assets/css/owl.css" />
-
   </head>
 
 
@@ -67,7 +45,7 @@ https://templatemo.com/tm-570-chain-app-dev
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
+            <a href="{{url_for('home')}}" class="logo">
               <img
                 src="static/assets/images/HAM-LOGO.png"
                 alt="Chain App Dev"
@@ -89,10 +67,21 @@ https://templatemo.com/tm-570-chain-app-dev
                 <a href="{{url_for('contact')}}">Contact Us</a>
               </li>
               <li class="scroll-to-section"><a href="{{url_for('events')}}">Events</a></li>
+              {% if is_user_in: %}
+              <li class="scroll-to-section">
+                <a href="{{url_for('logout')}}"><button class="btn btn-dark">Logout</button></a>
+                
+              </li>
+              {%else%}
               <li class="scroll-to-section">
                 <a href="{{url_for('login')}}"><button class="btn btn-dark">Login</button></a>
                 
               </li>
+              <li class="scroll-to-section">
+                <a href="{{url_for('register')}}"><button class="btn btn-dark">Register</button></a>
+                
+              </li>
+              {% endif %}
             </ul>
             <a class="menu-trigger">
               <span>Menu</span>
@@ -103,21 +92,6 @@ https://templatemo.com/tm-570-chain-app-dev
       
     </div>
   </header>
-    <!-- ***** Preloader Start ***** -->
-
-    <!-- ***** Preloader End ***** -->
-
-    <!-- ***** Header Area Start ***** -->
-    
-    
-    <!-- <span class="container trial-2">
-      wdwdwdw
-    </div> -->
-
-    <!-- ***** Header Area End ***** -->
-
-    
-
     <div
       class="main-banner wow fadeIn"
       id="top"
@@ -424,6 +398,7 @@ https://templatemo.com/tm-570-chain-app-dev
         <div class="copyright-text">
           <p>
             Copyright © 2022 HAM Club of BIT All Rights Reserved.
+           
             
             
           </p>

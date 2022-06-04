@@ -48,10 +48,10 @@
       <div class="col-12">
         <nav class="main-nav">
           <!-- ***** Logo Start ***** -->
-          <a href="index.html" class="logo">
+          <a href="{{url_for('home')}}" class="logo">
             <img
               src="static/assets/images/HAM-LOGO.png"
-              alt="Chain App Dev"
+             
             />
           </a>
           <!-- ***** Logo End ***** -->
@@ -70,10 +70,21 @@
               <a href="{{url_for('contact')}}">Contact Us</a>
             </li>
             <li class="scroll-to-section"><a href="{{url_for('events')}}">Events</a></li>
+            {% if is_user_in: %}
+            <li class="scroll-to-section">
+              <a href="{{url_for('logout')}}"><button class="btn btn-dark">Logout</button></a>
+              
+            </li>
+            {%else%}
             <li class="scroll-to-section">
               <a href="{{url_for('login')}}"><button class="btn btn-dark">Login</button></a>
               
             </li>
+            <li class="scroll-to-section">
+              <a href="{{url_for('register')}}"><button class="btn btn-dark">Register</button></a>
+              
+            </li>
+            {% endif %}
           </ul>
           <a class="menu-trigger">
             <span>Menu</span>
@@ -98,7 +109,33 @@
       <h1 class="font_1 Board">Events for Manthan</h1>
     </div>
   </div>
-  <div class="container event-1 ">
+
+  {%if  current_user.id==1%} 
+  <div class="clearfix">
+    <a class="btn btn-primary float-right" href="{{url_for('add_new_post')}}">Create New Post</a>
+  </div>
+  {%endif%}
+  <div class="container">
+    {% for i in all_events:%}
+    <div class="Title ">
+      <h2 class="for-events">{{i.title}}</h2>
+    </div>
+    <div class="body for-events-body">
+      {{i.body|safe}}
+    </div>
+    {%if  current_user.id==1%} 
+    <div class="edit">
+      <div class="clearfix">
+        <a class="btn btn-primary float-right" href="{{url_for('edit_post',id=i.id)}}">Edit Post</a>
+      </div>
+      <div class="delete">
+        <a href="{{url_for('delete_post', id=i.id) }}">✘</a>
+      </div>
+    </div>
+    {%endif%}
+    {%endfor%}
+  </div>
+  <!-- <div class="container event-1 ">
       <h2 class="h2-events">1) KGF - The Game :</h2>
       <p>
         <h3>Event Details :-</h3>
@@ -159,7 +196,7 @@
 <p class="events-page">● A couple of Dialogues</p>
 <p class="events-page">All of the above from the selected movie*</p>
 <p class="events-page">Judgement would be done based on the overall performance, and the winners will be awarded.</p>
-  </div>
+  </div> -->
   <footer id="newsletter">
     <div class="container">
   <div class="row">
@@ -215,13 +252,6 @@
       <div class="copyright-text">
         <p>
           Copyright © 2022 HAM Club of BIT All Rights Reserved.
-          <br />Design:
-          <a
-            href="https://templatemo.com/"
-            target="_blank"
-            title="css templates"
-            >TemplateMo</a
-          >
         </p>
       </div>
     </div>

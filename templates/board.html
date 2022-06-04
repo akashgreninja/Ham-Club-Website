@@ -16,6 +16,8 @@
       rel="stylesheet"
       href="static/assets/css/templatemo-chain-app-dev.css"
     />
+    <link rel="icon" href="../static/assets/images/logo.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="static/assets/css/animated.css" />
     <link rel="stylesheet" href="static/assets/css/owl.css" />
     <link
@@ -56,8 +58,6 @@
                 alt="Chain App Dev"
               />
             </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class="scroll-to-section">
                 <a href="{{url_for('home')}}" class="active">Home</a>
@@ -72,10 +72,21 @@
                 <a href="{{url_for('contact')}}">Contact Us</a>
               </li>
               <li class="scroll-to-section"><a href="{{url_for('events')}}">Events</a></li>
+              {% if is_user_in: %}
+              <li class="scroll-to-section">
+                <a href="{{url_for('logout')}}"><button class="btn btn-dark">Logout</button></a>
+                
+              </li>
+              {%else%}
               <li class="scroll-to-section">
                 <a href="{{url_for('login')}}"><button class="btn btn-dark">Login</button></a>
                 
               </li>
+              <li class="scroll-to-section">
+                <a href="{{url_for('register')}}"><button class="btn btn-dark">Register</button></a>
+                
+              </li>
+              {% endif %}
             </ul>
             <a class="menu-trigger">
               <span>Menu</span>
@@ -97,14 +108,49 @@
         data-wow-duration="1s"
         data-wow-delay="1s"
       >
-        <h1 class="font_1 Board">Our Board members</h1>
+        <h1 class="font_1 Board">Our Faculty</h1>
       </div>
     </div>
     <div class="container bod-display">
       <div class="row">
-        {%for i in dict %}
+        {%for i in dict_1 %}
 
         <div class="col-md-4 pro">
+          <div class="card modifications h-100" style="width: 18rem">
+            <img src="{{i.photo}}" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">{{i.name}}</h5>
+              <h4 class="card-post">{{i.post}}</h4>
+
+              <p class="card-text">{{i.quote}}</p>
+            </div>
+            <div class="socials-board">
+              <a href="{{i.facebook}}"
+                ><i class="fa-brands fa-facebook fa-2x"></i>
+              </a>
+              <a href="{{i.instagram}}"
+                ><i class="fa-brands fa-instagram fa-2x"></i
+              ></a>
+              <a href="{{i.twitter}}"
+                ><i class="fa-brands fa-twitter fa-2x"></i
+              ></a>
+              <a href="{{i.linkedIn}}"
+                ><i class="fa-brands fa-linkedin fa-2x"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+    <h1 class="font_1 Board_1">Our Board</h1>
+
+    <div class="container bod-display">
+      <div class="row">
+        {%for i in dict %}
+
+        <div class="col-md-4 ">
           <div class="card modifications h-100" style="width: 18rem">
             <img src="{{i.photo}}" class="card-img-top" alt="..." />
             <div class="card-body">

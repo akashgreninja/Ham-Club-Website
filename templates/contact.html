@@ -23,6 +23,8 @@
       href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" href="../static/assets/images/logo.ico" type="image/x-icon">
+
     
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -72,10 +74,21 @@
                 <a href="{{url_for('contact')}}">Contact Us</a>
               </li>
               <li class="scroll-to-section"><a href="{{url_for('events')}}">Events</a></li>
+              {% if is_user_in: %}
+              <li class="scroll-to-section">
+                <a href="{{url_for('logout')}}"><button class="btn btn-dark">Logout</button></a>
+                
+              </li>
+              {%else%}
               <li class="scroll-to-section">
                 <a href="{{url_for('login')}}"><button class="btn btn-dark">Login</button></a>
                 
               </li>
+              <li class="scroll-to-section">
+                <a href="{{url_for('register')}}"><button class="btn btn-dark">Register</button></a>
+                
+              </li>
+              {% endif %}
             </ul>
             <a class="menu-trigger">
               <span>Menu</span>
@@ -182,13 +195,8 @@
         <div class="copyright-text">
           <p>
             Copyright © 2022 HAM Club of BIT All Rights Reserved.
-            <br />Design:
-            <a
-              href="https://templatemo.com/"
-              target="_blank"
-              title="css templates"
-              >TemplateMo</a
-            >
+            
+            
           </p>
         </div>
       </div>

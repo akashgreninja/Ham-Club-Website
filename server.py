@@ -1,8 +1,99 @@
-from site import addpackage
-from flask import Flask, render_template,request
-import datetime
 
-app=Flask(__name__)
+from functools import wraps
+from flask import Flask, render_template,request, url_for,flash,redirect,abort
+import datetime
+from flask_sqlalchemy import SQLAlchemy
+from flask_bootstrap import Bootstrap
+from wtforms import StringField, SubmitField,PasswordField
+from wtforms.validators import DataRequired
+from forms import FieldForm,LoginForm,CreatePostForm
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager
+from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
+from flask_ckeditor import CKEditor
+
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///trial-2.db"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] ="akashuday"
+ckeditor = CKEditor(app)
+Bootstrap(app)
+db = SQLAlchemy(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
+class User(UserMixin,db.Model):
+    __tablename__="users"
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(100), unique=True)
+    password = db.Column(db.String(100))
+    name = db.Column(db.String(100))
+
+db.create_all()
+
+class Info(UserMixin,db.Model):
+    __tablename__="events"
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100),nullable=True)
+    body = db.Column(db.String(100),nullable=True)
+    
+
+db.create_all()
+
+
+
+def admin_only(f):
+    @wraps(f)
+    def decorator_func(*args,**kwargs):
+        if current_user.is_anonymous or current_user.id !=1:
+            return abort(403)
+        return f(*args, **kwargs)    
+    return decorator_func
+
+
+
+
+
+dict_1=[
+    {
+        "photo":"./static/assets/images/Bod-images/thejusvini.webp",
+        "name":"Thejusvani",
+        "post":"President",
+        "quote":'"It is all happening for a reason."',
+        "instagram":"https://instagram.com/thejusvani?igshid=YmMyMTA2M2Y=",
+        "linkedIn":"https://www.linkedin.com/in/t-thejusvani-1b71681b2",
+        "facebook":"",
+        "twitter":"https://twitter.com/thejusvani?t=wGmsuKzD1rtWUVHY1w7zJw&s=09",
+    },
+      {
+        "photo":"./static/assets/images/Bod-images/thejusvini.webp",
+        "name":"Thejusvani",
+        "post":"President",
+        "quote":'"It is all happening for a reason."',
+        "instagram":"https://instagram.com/thejusvani?igshid=YmMyMTA2M2Y=",
+        "linkedIn":"https://www.linkedin.com/in/t-thejusvani-1b71681b2",
+        "facebook":"",
+        "twitter":"https://twitter.com/thejusvani?t=wGmsuKzD1rtWUVHY1w7zJw&s=09",
+    },
+      {
+        "photo":"./static/assets/images/Bod-images/thejusvini.webp",
+        "name":"Thejusvani",
+        "post":"President",
+        "quote":'"It is all happening for a reason."',
+        "instagram":"https://instagram.com/thejusvani?igshid=YmMyMTA2M2Y=",
+        "linkedIn":"https://www.linkedin.com/in/t-thejusvani-1b71681b2",
+        "facebook":"",
+        "twitter":"https://twitter.com/thejusvani?t=wGmsuKzD1rtWUVHY1w7zJw&s=09",
+    },
+]
 
 dict=[
     {
@@ -100,7 +191,7 @@ dict=[
     },
 
     {
-        "photo":"./static/assets/images/Bod-images/likith.webp",
+        "photo":"./static/assets/images/Bod-images/Likith.webp",
         "name":"Likithraj D R",
         "post":"PR Director", 
         "quote":'"ಸೋತರು ನಗುತಿರು ಸೋಲಿಸಿದವನು ಚಿಂತಿಸುವಂತೆ"',
@@ -185,7 +276,13 @@ date=datetime.datetime.now().year
 
 @app.route("/")
 def home():
-    return render_template("index.html", )
+    return render_template("index.html",is_user_in=current_user.is_authenticated )
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return render_template("index.html",is_user_in=current_user.is_authenticated )
 
 
 
@@ -195,7 +292,7 @@ def board():
     
         
        
-    return render_template("board.html",dict=dict)
+    return render_template("board.html",dict=dict,dict_1=dict_1,is_user_in=current_user.is_authenticated )
 
 @app.route("/contact",methods=["GET","POST"])
 def contact():
@@ -206,13 +303,97 @@ def contact():
 
 @app.route('/events')
 def events():
-    return render_template('events.html')
+    all_events=Info.query.all()
+    return render_template('events.html',all_events=all_events,is_user_in=current_user.is_authenticated )
 
 
-@app.route('/login')
+@app.route('/login',methods=["POST","GET"])
 def login():
-    return render_template('login.html')
+    form=LoginForm()
+    the_object=User.query.filter_by(email=form.email.data).first()
+    if form.validate_on_submit():
+        if not the_object:
+            flash("please register again this email does not exist ")
+            return redirect(url_for('login'))
 
+        elif not check_password_hash(the_object.password,form.password.data):  
+            flash("That password is wrong.")
+            return redirect(url_for('login'))
+
+        else:
+            login_user(the_object)
+            return redirect(url_for('home'))    
+
+
+    return render_template('login.html',form=form,is_user_in=current_user.is_authenticated)
+
+
+
+@app.route('/register',methods=["POST","GET"])
+def register():
+    form=FieldForm()
+    
+    if form.validate_on_submit():
+        if User.query.filter_by(email=form.email.data).first():
+            flash("you have already registered ,Sign up")
+            return redirect(url_for('login'))
+
+        new_password=generate_password_hash(password=form.password.data, method='pbkdf2:sha256', salt_length=8)
+        get_object=User(
+  
+        email = form.email.data,
+        password = new_password,
+        name = form.name.data
+        )
+        db.session.add(get_object)
+        db.session.commit()
+        login_user(get_object)
+
+        return redirect(url_for('home'))
+    return render_template('register.html',form=form,is_user_in=current_user.is_authenticated )
+
+
+
+@app.route("/create-event",methods=["POST","GET"])
+@admin_only
+def add_new_post():
+    form=CreatePostForm()
+    if form.validate_on_submit():
+        new_event=Info(
+            title = form.title.data,
+            body = form.body.data
+        )
+        db.session.add(new_event)
+        db.session.commit()
+        return redirect(url_for('events'))
+
+    return render_template('create_event.html',form=form,is_user_in=current_user.is_authenticated )
+
+
+@app.route("/edit-post/<int:id>",methods=["POST","GET"])
+@admin_only
+def edit_post(id):
+    the_object=Info.query.get(id)
+    form=CreatePostForm(
+        title = the_object.title,
+        body = the_object.body
+    )
+    if form.validate_on_submit():
+        the_object.title=form.title.data
+        the_object.body=form.body.data
+        db.session.commit()
+        return redirect(url_for('events'))
+
+    return render_template('create_event.html',form=form,is_user_in=current_user.is_authenticated )
+
+
+@app.route("/delete/<int:id>")
+@admin_only
+def delete_post(id):
+    the_object=Info.query.get(id)
+    db.session.delete(the_object)
+    db.session.commit()
+    return redirect(url_for('events'))
 
 
 if __name__=="__main__":
