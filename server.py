@@ -11,12 +11,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from flask_ckeditor import CKEditor
-
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///trial-2.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] ="akashuday"
+app.config['SECRET_KEY'] =os.environ.get("SECRET_KEY")
+# "akashuday"
 ckeditor = CKEditor(app)
 Bootstrap(app)
 db = SQLAlchemy(app)
