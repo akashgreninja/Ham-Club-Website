@@ -14,7 +14,7 @@ from flask_ckeditor import CKEditor
 import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL","sqlite:///trial-2.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] =os.environ.get("SECRET_KEY")
 # "akashuday"
@@ -216,7 +216,7 @@ dict=[
     },
 
     {
-        "photo":"./static/assets/images/Bod-images/Likith.webp",
+        "photo":"./static/assets/images/Bod-images/likith.webp",
         "name":"Likithraj D R",
         "post":"PR Director", 
         "quote":'"ಸೋತರು ನಗುತಿರು ಸೋಲಿಸಿದವನು ಚಿಂತಿಸುವಂತೆ"',
