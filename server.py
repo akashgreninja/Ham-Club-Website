@@ -17,7 +17,7 @@ import os
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL","sqlite:///trial-2.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] =os.environ.get('SECRET_KEY')
+app.config['SECRET_KEY'] ="akash"
 # "akashuday"
 ckeditor = CKEditor(app)
 Bootstrap(app)
@@ -393,7 +393,7 @@ def add_new_post():
             db.session.add(new_event)
             db.session.commit()
         except Exception as e:
-            print
+            print(e)
 
         return redirect(url_for('events'))
 
