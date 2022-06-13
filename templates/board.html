@@ -63,7 +63,7 @@
                 <a href="{{url_for('home')}}" class="active">Home</a>
               </li>
               <li class="scroll-to-section">
-                <a href="#services">Join Us</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfx5jVrkgVTXrsvAZWz5P6o7InnkMUWgPf5qVuWVyZ6-r53Yg/viewform">Join Us</a>
               </li>
               <li class="scroll-to-section">
                 <a href="{{url_for('board')}}">Board</a>
@@ -78,11 +78,12 @@
                 
               </li>
               {%else%}
+
               <li class="scroll-to-section">
                 <a href="{{url_for('login')}}"><button class="btn btn-dark">Login</button></a>
                 
               </li>
-              <li class="scroll-to-section">
+              <li class="scroll-to-section no-padding">
                 <a href="{{url_for('register')}}"><button class="btn btn-dark">Register</button></a>
                 
               </li>
@@ -111,11 +112,11 @@
         <h1 class="font_1 Board">Our Faculty</h1>
       </div>
     </div>
-    <div class="container bod-display">
+    <div class="container bod-display princi">
       <div class="row">
         {%for i in dict_1 %}
 
-        <div class="col-md-4 pro">
+        <div class="col-md-6 pro">
           <div class="card modifications h-100" style="width: 18rem">
             <img src="{{i.photo}}" class="card-img-top" alt="..." />
             <div class="card-body">
@@ -124,20 +125,7 @@
 
               <p class="card-text">{{i.quote}}</p>
             </div>
-            <div class="socials-board">
-              <a href="{{i.facebook}}"
-                ><i class="fa-brands fa-facebook fa-2x"></i>
-              </a>
-              <a href="{{i.instagram}}"
-                ><i class="fa-brands fa-instagram fa-2x"></i
-              ></a>
-              <a href="{{i.twitter}}"
-                ><i class="fa-brands fa-twitter fa-2x"></i
-              ></a>
-              <a href="{{i.linkedIn}}"
-                ><i class="fa-brands fa-linkedin fa-2x"></i
-              ></a>
-            </div>
+            
           </div>
         </div>
 

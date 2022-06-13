@@ -47,6 +47,10 @@
   font-size: 34px;
   color: #211A23;
 }
+.princi{
+  display: flex;
+  justify-content: center;
+}
 .delete{
   padding-left: 20px;
 }
