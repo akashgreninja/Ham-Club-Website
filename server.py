@@ -1,4 +1,5 @@
 
+from cmath import e
 from functools import wraps
 from flask import Flask, render_template,request, url_for,flash,redirect,abort
 import datetime
@@ -16,7 +17,7 @@ import os
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL","sqlite:///trial-2.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] =os.environ.get("SECRET_KEY")
+app.config['SECRET_KEY'] =os.environ.get('SECRET_KEY')
 # "akashuday"
 ckeditor = CKEditor(app)
 Bootstrap(app)
@@ -388,8 +389,12 @@ def add_new_post():
             title = form.title.data,
             body = form.body.data
         )
-        db.session.add(new_event)
-        db.session.commit()
+        try:
+            db.session.add(new_event)
+            db.session.commit()
+        except Exception as e:
+            print
+
         return redirect(url_for('events'))
 
     return render_template('create_event.html',form=form,is_user_in=current_user.is_authenticated )
