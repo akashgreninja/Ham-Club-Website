@@ -133,7 +133,7 @@ dict=[
     {
         
         "name":"Manish Rakshith",
-        "photo":"./static/assets/images/Bod-images/Manish.jpg",
+        "photo":"./static/assets/images/Bod-images/manish_1.webp",
         "post":"Tresurer",
         "quote":'"IF YOU WANT TO WALK FAST, WALK ALONE. IF YOU WANT TO WALK FAR, WALK TOGETHER."',
         "instagram":"http://instagram.com/manish_rakshith?utm_source=qr",
@@ -218,7 +218,7 @@ dict=[
 
     {
         "photo":"./static/assets/images/Bod-images/likith.webp",
-        "name":"Likithraj D R",
+        "name":"Likhithraj D R",
         "post":"PR Director", 
         "quote":'"ಸೋತರು ನಗುತಿರು ಸೋಲಿಸಿದವನು ಚಿಂತಿಸುವಂತೆ"',
         "instagram":"https://instagram.com/likhithraj_1?igshid=YmMyMTA2M2Y=",
