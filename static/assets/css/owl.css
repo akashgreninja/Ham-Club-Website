@@ -117,6 +117,14 @@
   z-index: -1;
 }
 
+.images-for-ham{
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .picrad::before{
   content: '';
   background-image: url('/static/assets/images/services-right-dec.png');

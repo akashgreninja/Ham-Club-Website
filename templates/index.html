@@ -67,21 +67,7 @@
                 <a href="{{url_for('contact')}}">Contact Us</a>
               </li>
               <li class="scroll-to-section"><a href="{{url_for('events')}}">Events</a></li>
-              {% if is_user_in: %}
-              <li class="scroll-to-section">
-                <a href="{{url_for('logout')}}"><button class="btn btn-dark">Logout</button></a>
-                
-              </li>
-              {%else%}
-              <li class="scroll-to-section">
-                <a href="{{url_for('login')}}"><button class="btn btn-dark">Login</button></a>
-                
-              </li>
-              <li class="scroll-to-section">
-                <a href="{{url_for('register')}}"><button class="btn btn-dark">Register</button></a>
-                
-              </li>
-              {% endif %}
+             
             </ul>
             <a class="menu-trigger">
               <span>Menu</span>

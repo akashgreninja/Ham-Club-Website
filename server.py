@@ -21,34 +21,34 @@ app.config['SECRET_KEY'] =os.environ.get("SECRET_KEY")
 # "akashuday"
 ckeditor = CKEditor(app)
 Bootstrap(app)
-db = SQLAlchemy(app)
-login_manager = LoginManager()
-login_manager.init_app(app)
+# db = SQLAlchemy(app)
+# login_manager = LoginManager()
+# login_manager.init_app(app)
 
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.query.get(int(user_id))
 
 
-class User(UserMixin,db.Model):
-    __tablename__="users"
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(100), unique=True)
-    password = db.Column(db.String(100))
-    name = db.Column(db.String(100))
+# class User(UserMixin,db.Model):
+#     __tablename__="users"
+#     id = db.Column(db.Integer, primary_key=True)
+#     email = db.Column(db.String(100), unique=True)
+#     password = db.Column(db.String(100))
+#     name = db.Column(db.String(100))
 
-db.create_all()
+# db.create_all()
 
-class Info(UserMixin,db.Model):
-    __tablename__="events"
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100),nullable=True)
-    body = db.Column(db.String(100000),nullable=True)
+# class Info(UserMixin,db.Model):
+#     __tablename__="events"
+#     id = db.Column(db.Integer, primary_key=True)
+#     title = db.Column(db.String(100),nullable=True)
+#     body = db.Column(db.String(100000),nullable=True)
     
 
-db.create_all()
+# db.create_all()
 
 
 
@@ -302,7 +302,9 @@ date=datetime.datetime.now().year
 
 @app.route("/")
 def home():
-    return render_template("index.html",is_user_in=current_user.is_authenticated )
+    return render_template("index.html",
+    # is_user_in=current_user.is_authenticated
+     )
 
 @app.route("/logout")
 @login_required
@@ -318,7 +320,11 @@ def board():
     
         
        
-    return render_template("board.html",dict=dict,dict_1=dict_1,is_user_in=current_user.is_authenticated )
+    return render_template("board.html",
+    dict=dict,
+    dict_1=dict_1,
+    # is_user_in=current_user.is_authenticated 
+    )
 
 @app.route("/contact",methods=["GET","POST"])
 def contact():
@@ -329,101 +335,104 @@ def contact():
 
 @app.route('/events')
 def events():
-    all_events=Info.query.all()
-    return render_template('events.html',all_events=all_events,is_user_in=current_user.is_authenticated )
+    # all_events=Info.query.all()
+    return render_template('events.html',
+    # all_events=all_events,
+    # is_user_in=current_user.is_authenticated
+     )
 
 
-@app.route('/login',methods=["POST","GET"])
-def login():
-    form=LoginForm()
-    the_object=User.query.filter_by(email=form.email.data).first()
-    if form.validate_on_submit():
-        if not the_object:
-            flash("please register again this email does not exist ")
-            return redirect(url_for('login'))
+# @app.route('/login',methods=["POST","GET"])
+# def login():
+#     form=LoginForm()
+#     the_object=User.query.filter_by(email=form.email.data).first()
+#     if form.validate_on_submit():
+#         if not the_object:
+#             flash("please register again this email does not exist ")
+#             return redirect(url_for('login'))
 
-        elif not check_password_hash(the_object.password,form.password.data):  
-            flash("That password is wrong.")
-            return redirect(url_for('login'))
+#         elif not check_password_hash(the_object.password,form.password.data):  
+#             flash("That password is wrong.")
+#             return redirect(url_for('login'))
 
-        else:
-            login_user(the_object)
-            return redirect(url_for('home'))    
-
-
-    return render_template('login.html',form=form,is_user_in=current_user.is_authenticated)
+#         else:
+#             login_user(the_object)
+#             return redirect(url_for('home'))    
 
 
+#     return render_template('login.html',form=form,is_user_in=current_user.is_authenticated)
 
-@app.route('/register',methods=["POST","GET"])
-def register():
-    form=FieldForm()
+
+
+# @app.route('/register',methods=["POST","GET"])
+# def register():
+#     form=FieldForm()
     
-    if form.validate_on_submit():
-        if User.query.filter_by(email=form.email.data).first():
-            flash("you have already registered ,Sign up")
-            return redirect(url_for('login'))
+#     if form.validate_on_submit():
+#         if User.query.filter_by(email=form.email.data).first():
+#             flash("you have already registered ,Sign up")
+#             return redirect(url_for('login'))
 
-        new_password=generate_password_hash(password=form.password.data, method='pbkdf2:sha256', salt_length=8)
-        get_object=User(
+#         new_password=generate_password_hash(password=form.password.data, method='pbkdf2:sha256', salt_length=8)
+#         get_object=User(
   
-        email = form.email.data,
-        password = new_password,
-        name = form.name.data
-        )
-        db.session.add(get_object)
-        db.session.commit()
-        login_user(get_object)
+#         email = form.email.data,
+#         password = new_password,
+#         name = form.name.data
+#         )
+#         db.session.add(get_object)
+#         db.session.commit()
+#         login_user(get_object)
 
-        return redirect(url_for('home'))
-    return render_template('register.html',form=form,is_user_in=current_user.is_authenticated )
-
-
-
-@app.route("/create-event",methods=["POST","GET"])
-@admin_only
-def add_new_post():
-    form=CreatePostForm()
-    if form.validate_on_submit():
-        new_event=Info(
-            title = form.title.data,
-            body = form.body.data
-        )
-        try:
-            db.session.add(new_event)
-            db.session.commit()
-        except Exception as e:
-            print(e)
-
-        return redirect(url_for('events'))
-
-    return render_template('create_event.html',form=form,is_user_in=current_user.is_authenticated )
+#         return redirect(url_for('home'))
+#     return render_template('register.html',form=form,is_user_in=current_user.is_authenticated )
 
 
-@app.route("/edit-post/<int:id>",methods=["POST","GET"])
-@admin_only
-def edit_post(id):
-    the_object=Info.query.get(id)
-    form=CreatePostForm(
-        title = the_object.title,
-        body = the_object.body
-    )
-    if form.validate_on_submit():
-        the_object.title=form.title.data
-        the_object.body=form.body.data
-        db.session.commit()
-        return redirect(url_for('events'))
 
-    return render_template('create_event.html',form=form,is_user_in=current_user.is_authenticated )
+# @app.route("/create-event",methods=["POST","GET"])
+# @admin_only
+# def add_new_post():
+#     form=CreatePostForm()
+#     if form.validate_on_submit():
+#         new_event=Info(
+#             title = form.title.data,
+#             body = form.body.data
+#         )
+#         try:
+#             db.session.add(new_event)
+#             db.session.commit()
+#         except Exception as e:
+#             print(e)
+
+#         return redirect(url_for('events'))
+
+#     return render_template('create_event.html',form=form,is_user_in=current_user.is_authenticated )
 
 
-@app.route("/delete/<int:id>")
-@admin_only
-def delete_post(id):
-    the_object=Info.query.get(id)
-    db.session.delete(the_object)
-    db.session.commit()
-    return redirect(url_for('events'))
+# @app.route("/edit-post/<int:id>",methods=["POST","GET"])
+# @admin_only
+# def edit_post(id):
+#     the_object=Info.query.get(id)
+#     form=CreatePostForm(
+#         title = the_object.title,
+#         body = the_object.body
+#     )
+#     if form.validate_on_submit():
+#         the_object.title=form.title.data
+#         the_object.body=form.body.data
+#         db.session.commit()
+#         return redirect(url_for('events'))
+
+#     return render_template('create_event.html',form=form,is_user_in=current_user.is_authenticated )
+
+
+# @app.route("/delete/<int:id>")
+# @admin_only
+# def delete_post(id):
+#     the_object=Info.query.get(id)
+#     db.session.delete(the_object)
+#     db.session.commit()
+#     return redirect(url_for('events'))
 
 
 if __name__=="__main__":
