@@ -155,7 +155,7 @@ dict=[
         "photo":"./static/assets/images/Bod-images/anirudh.webp",
         "name":"Anirudh Madhav Kulkarni",
         "post":"Social Media Director",
-        "quote":'"You miss 100% of the shots you don’t take."',
+      
         "instagram":"https://instagram.com/_anirudh9094_?igshid=YmMyMTA2M2Y=",
         "linkedIn":"https://www.linkedin.com/in/anirudh-madhav-9a3766191",
         "facebook":"https://www.facebook.com/anirudh.madhav.35",
