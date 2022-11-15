@@ -132,21 +132,11 @@ dict=[
         "twitter":"",
     },
    
-    {
-        
-        "name":"Manish Rakshith",
-        "photo":"./static/assets/images/Bod-images/manish_1.webp",
-        "post":"Tresurer",
-        "quote":'"IF YOU WANT TO WALK FAST, WALK ALONE. IF YOU WANT TO WALK FAR, WALK TOGETHER."',
-        "instagram":"http://instagram.com/manish_rakshith?utm_source=qr",
-        "linkedIn":"https://www.linkedin.com/public-profile/settings",
-        "facebook":"https://www.facebook.com/Manish.Rakshith",
-        "twitter":"",
-        },
+   
     {
         "photo":"./static/assets/images/Bod-images/somya.webp",
         "name":"Soumya",
-        "post":"Joint Tresurer",
+        "post":"Tresurer",
         "quote":'"All you have is now."',
         "instagram":"https://www.instagram.com/_soumya.deshpande_/",
         "linkedIn":"https://www.linkedin.com/in/soumya-k-deshpande-a6b25321a",
